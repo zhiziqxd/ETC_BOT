@@ -14,28 +14,33 @@ string digit(int x){
 	return f(t);
 }
 string lol[10]={
-"ÊÀ½çÍÑ½ÚÁË£¬ÕâÊÇÔõÑùÒ»¸ö±»×çÖäµÄÒò¹û°¡£¬¾¹ÊÇÒòÎª¾ÀÕýËü¶øÉú!",
-"×îÕÛÄ¥ÈËµÄ»òÐí²»ÊÇÒ»³¡²ÒÁÒÕ½Õù£¬¶øÊÇ·³ËöµÄÈÕ³£Éú»î¡£",
-"ÉÌÅ®²»ÖªÍö¹úºÞ£¬¸ô½­ÓÌ³ªºóÍ¥»¨¡£",
+"ä¸–ç•Œè„±èŠ‚äº†ï¼Œè¿™æ˜¯æ€Žæ ·ä¸€ä¸ªè¢«è¯…å’’çš„å› æžœå•Šï¼Œç«Ÿæ˜¯å› ä¸ºçº æ­£å®ƒè€Œç”Ÿ!",
+"æœ€æŠ˜ç£¨äººçš„æˆ–è®¸ä¸æ˜¯ä¸€åœºæƒ¨çƒˆæˆ˜äº‰ï¼Œè€Œæ˜¯çƒ¦ççš„æ—¥å¸¸ç”Ÿæ´»ã€‚",
+"å•†å¥³ä¸çŸ¥äº¡å›½æ¨ï¼Œéš”æ±ŸçŠ¹å”±åŽåº­èŠ±ã€‚",
 "I'm nothing without you.",
-"ºÎ´¦ÍûÉñÖÝ£¿ÂúÑÛ·ç¹â±±¹ÌÂ¥¡£",
-"Á¦°ÎÉ½ÙâÆø¸ÇÊÀ¡£Ê±²»ÀûÙâæí²»ÊÅ¡£",
-"×ÔÔðÒª¶ÌÔÝ£¬²»¹ýÒª³¤¾ÃÃú¼Ç¡£",
-"ÎÒÃÇÎÞ·¨»Øµ½¹ýÈ¥£¬Ç°½øµÄ·½Ïò£¬Ö»ÓÐÎ´À´¡£",
-"ÈËµÄ¾«ÉñË¼Ïë·½ÃæµÄÓÅÊÆÔ½´ó£¬¸øÎÞÁÄÁôÏÂµÄ¿Õ¼ä¾ÍÔ½Ð¡¡£"
+"ä½•å¤„æœ›ç¥žå·žï¼Ÿæ»¡çœ¼é£Žå…‰åŒ—å›ºæ¥¼ã€‚",
+"åŠ›æ‹”å±±å…®æ°”ç›–ä¸–ã€‚æ—¶ä¸åˆ©å…®éª“ä¸é€ã€‚",
+"è‡ªè´£è¦çŸ­æš‚ï¼Œä¸è¿‡è¦é•¿ä¹…é“­è®°ã€‚",
+"æˆ‘ä»¬æ— æ³•å›žåˆ°è¿‡åŽ»ï¼Œå‰è¿›çš„æ–¹å‘ï¼Œåªæœ‰æœªæ¥ã€‚",
+"äººçš„ç²¾ç¥žæ€æƒ³æ–¹é¢çš„ä¼˜åŠ¿è¶Šå¤§ï¼Œç»™æ— èŠç•™ä¸‹çš„ç©ºé—´`å°±è¶Šå°ã€‚"
 }
 string check(string str,string name){
 	if(bot.lock==false){
-		if(str.find("ÄãºÃ"))<=str.length()||str.find("hi")<=str.length()){
+		if(str.find("ä½ å¥½"))<=str.length()||str.find("hi")<=str.length()){
 		  if(rand()%2==0){
 			  return "hiyo";
 		  }
 		  else{
-		  	return "ÄãºÃ°¡";
+		  	return "ä½ å¥½å•Š";
 			}
 	  }
+	  else if(check_afk(name)){
+	  	if(del_afk(name)){
+				return "æ¬¢è¿Žå›žæ¥";
+			}
+		}
 		else if(afk_find(str)){
-			return "@"+name+" ´ËÈËÕýÔÚ¹Ò»úÅ¶";
+			return "@"+name+" æ­¤äººæ­£åœ¨æŒ‚æœºå“¦";
 		}
 		else if(str=="game"){
 			if(bot.game=false){
@@ -55,14 +60,14 @@ string check(string str,string name){
 		}
 		else if(str=="afk"){
 			add_afk(name);
-			return name+"ÕýÔÚafk,¼ÓÓÍ!";
+			return name+"æ­£åœ¨afk,åŠ æ²¹!";
 		}
-		else if(str=="114514"||str=="²ÌÐìÀ¤"){
-			return "Ð¡ºÚ×ÓÂ¶³ö¼¦½ÅÁË°É";
+		else if(str=="114514"||str=="è”¡å¾å¤"){
+			return "å°é»‘å­éœ²å‡ºé¸¡è„šäº†å§";
 		}
 		else if(str.find("say ")<=str.length()){
 			say(str,name);
-			return "ÁôÑÔ³É¹¦!";
+			return "ç•™è¨€æˆåŠŸ!";
 		}
 		else if(str=="fuck"){
 			return "@"+name<<" fuck you";
@@ -72,7 +77,7 @@ string check(string str,string name){
 		}
 		else if(str=="lock"&&admin_find(trip)){
 			bot.lock=true;
-			return "ÒÑ¾­Ëø×¡£¬²»ÓÃµ£ÐÄÎÒÁË!";
+			return "å·²ç»é”ä½ï¼Œä¸ç”¨æ‹…å¿ƒæˆ‘äº†!";
 		}
 		else{
 			r=rand()%10;
@@ -86,7 +91,7 @@ string check(string str,string name){
 	}
 	else if(admin_find(trip)&&str=="lock"){
 		bot.lock=false;
-		return "¼ÌÐø¹¤×÷ing";
+		return "ç»§ç»­å·¥ä½œing";
 	}
 }
 #endif
