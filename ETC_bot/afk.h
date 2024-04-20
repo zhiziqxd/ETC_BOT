@@ -9,14 +9,15 @@ void add_afk(string str){
 	afk.push_back(str);
 	return;
 }
-bool del_afk(string str){//ÓĞ¿ÉÄÜÊ§°Ü
+bool del_afk(string str){//æœ‰å¯èƒ½å¤±è´¥
+	bool flag=false;
 	for(int i=0;i<afk.size();i++){
 		if(afk.at(i)==str){
 			afk.erase(i);
-			return true;//³É¹¦
+			flag=true;
 		}
 	}
-	return false;
+	return flag;
 }
 bool check_afk(string str){
 	for(int i=0;i<afk.size();i++){
@@ -32,7 +33,7 @@ int afk_number(){
 }
 string afk_find(string str){
 	for(int i=0;i<str.length()-1;i++){
-		str[i]=str[i+1];//È¥³ı@
+		str[i]=str[i+1];//å»é™¤@
 	}
 	string t="";
 	for(int i=0;str[i]!=' '&&i<str.length();i++){
